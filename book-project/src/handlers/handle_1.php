@@ -4,7 +4,13 @@
 require_once __DIR__ . '/../helpers.php';
 
 
-
+/**
+ * Обрабатывает запрос для добавления новой книги в систему
+ *
+ * Проверяет поля формы, выводит ошибки, если они есть, и сохраняет книгу в books.txt
+ *
+ * @return
+ */
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $title = trim($_POST['title']);
     $category = trim($_POST['category']);
@@ -14,6 +20,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $errors = [];
 
+
+    // Проверка обязательных полей
     if (empty($title)) {
         $errors[] = "Название книги обязательно.";
     }
@@ -32,6 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         exit;
     }
 
+    //данные о новой книге
     $newBook = [
         'title' => htmlspecialchars($title),
         'category' => htmlspecialchars($category),
@@ -40,6 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         'date' => date('Y-m-d H:i:s')
     ];
 
+    //сохраняет книгу в файл
     saveBook($newBook);
 
     header('Location: /index.php');

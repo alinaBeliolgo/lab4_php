@@ -1,4 +1,11 @@
 <?php
+
+/**
+ * Сохраняет информацию о книге в файл.
+ *
+ * @param array $book Ассоциативный массив с данными книги (title, category, description, tags, date).
+ * @return void
+ */
 function saveBook(array $book)
 {
     $file = __DIR__ . '/../storage/books.txt';

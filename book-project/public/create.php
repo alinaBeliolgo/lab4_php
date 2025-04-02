@@ -2,6 +2,7 @@
 
 require_once __DIR__ . "/../src/handlers/handle_1.php"; ?>
 
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
